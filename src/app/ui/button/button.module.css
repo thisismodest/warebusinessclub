@@ -1,0 +1,32 @@
+.button {
+  cursor: pointer;
+  display: inline-block;
+
+  border: 0.2em solid #0f2528;
+  padding: 1em 3em;
+  background-color: transparent;
+  border-radius: 10rem;
+
+  transition: all 0.1s;
+
+  text-decoration: none;
+
+  &:hover {
+    background-color: #0f2528;
+    color: #edfff9;
+  }
+}
+
+.invert {
+  background-color: #0f2528;
+  color: #edfff9;
+
+  &:hover {
+    background-color: #edfff9;
+    color: #0f2528;
+  }
+}
+
+.medium {
+  font-size: 1.2rem;
+}

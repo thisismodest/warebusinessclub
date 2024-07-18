@@ -1,95 +1,100 @@
-import Image from "next/image";
+"use client"
+
 import styles from "./page.module.css";
+import Button from "./ui/button/button";
+import WareOutline from "./svg/ware-outline";
 
 export default function Home() {
+
+  const mailTo = "mailto:businessclub@modestindustries.co?subject=I want to join Ware Business Club&body=Hello :)%0D%0APlease fill in the details below:%0D%0A%0D%0A%0D%0ABusiness name:%0D%0AWebsite:%0D%0AEmail:%0D%0AReason for wanting to join:%0D%0A";
+
   return (
     <main className={styles.main}>
-      <div className={styles.description}>
-        <p>
-          Get started by editing&nbsp;
-          <code className={styles.code}>src/app/page.tsx</code>
-        </p>
-        <div>
-          <a
-            href="https://vercel.com?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            By{" "}
-            <Image
-              src="/vercel.svg"
-              alt="Vercel Logo"
-              className={styles.vercelLogo}
-              width={100}
-              height={24}
-              priority
-            />
-          </a>
+      <nav className={styles.nav}>
+        <div className={styles["nav-inner-wrapper"]}>
+          <p className={styles.logo}>Ware Business Club</p>
+          <ul>
+            <li><a href="mailto:businessclub@modestindustries.co">Contact</a></li>
+            <li><a href="#">Login</a></li>
+          </ul>
         </div>
-      </div>
+      </nav>
+      <section className={styles["intro-section"]}>
+        <div className={styles["intro-wrapper"]}>
+          <div className={styles.intro}>
+            <h1 className={styles.header}>Thrive with other local business owners</h1>
 
-      <div className={styles.center}>
-        <Image
-          className={styles.logo}
-          src="/next.svg"
-          alt="Next.js Logo"
-          width={180}
-          height={37}
-          priority
-        />
-      </div>
+            <p>Elevate your business by joining Ware Business Club, your go-to network for growth and collaboration.</p>
 
-      <div className={styles.grid}>
-        <a
-          href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2>
-            Docs <span>-&gt;</span>
-          </h2>
-          <p>Find in-depth information about Next.js features and API.</p>
-        </a>
+            <p>Connect with fellow entrepreneurs, share valuable insights, and enjoy exclusive member discounts. Together, we can help each other thrive.</p>
 
-        <a
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2>
-            Learn <span>-&gt;</span>
-          </h2>
-          <p>Learn about Next.js in an interactive course with&nbsp;quizzes!</p>
-        </a>
+            <Button className={styles.button} goToUrl={mailTo}>Become a member</Button>
 
-        <a
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2>
-            Templates <span>-&gt;</span>
-          </h2>
-          <p>Explore starter templates for Next.js.</p>
-        </a>
-
-        <a
-          href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2>
-            Deploy <span>-&gt;</span>
-          </h2>
-          <p>
-            Instantly deploy your Next.js site to a shareable URL with Vercel.
-          </p>
-        </a>
-      </div>
-    </main>
+            <p className={styles["beta-text"]}>During our beta program membership is <em>free for all businesses</em>.</p>
+          </div>
+          <WareOutline
+            className={styles["intro-svg"]}
+            strokeColor="#c9e6dd"
+            strokeWidth={10}
+          >
+            <div className={styles.circle} style={{ top: "30%", right: "30%" }}></div>
+            {/* <div className={styles.circle} style={{ top: "40%", right: "40%" }}></div> */}
+            <div className={styles.circle} style={{ top: "13%", right: "53%" }}></div>
+            <div className={styles.circle} style={{ top: "54%", right: "90%" }}></div>
+            {/* <div className={styles.circle} style={{ top: "60%", right: "40%" }}></div> */}
+            <div className={styles.circle} style={{ top: "63%", right: "50%" }}></div>
+            {/* <div className={styles.circle} style={{ top: "40%", right: "60%" }}></div> */}
+            <div className={styles.circle} style={{ top: "13%", right: "10%" }}></div>
+            <div className={styles.circle} style={{ top: "44%", right: "17%" }}></div>
+          </WareOutline>
+        </div>
+      </section>
+      <section className={styles.requirements}>
+        <div className={styles.wrapper}>
+          <h2>Membership requirements:</h2>
+          <ul>
+            <li>
+              <div className={styles["emoji-icon"]}>🏢</div>
+              <p>You are a limited company director of any size</p>
+            </li>
+            <li>
+              <div className={styles["emoji-icon"]}>📍</div>
+              <p>Your business operates, or is physically based in or around Ware</p>
+            </li>
+            <li>
+              <div className={styles["emoji-icon"]}>🤝</div>
+              <p>You want to network with other local and likeminded businesses</p>
+            </li>
+            <li>
+              <div className={styles["emoji-icon"]}>💞</div>
+              <p>You like supporting other local businesses (e.g. offering advice and insights)</p>
+            </li>
+            <li>
+              <div className={styles["emoji-icon"]}>💷</div>
+              <p>You are open to offering member-only discounts that encourages local engagement</p>
+            </li>
+            <li>
+              <div className={styles["emoji-icon"]}>👩‍🔬</div>
+              <p>You are happy to join an exclusive group and be a beta tester of this platform</p>
+            </li>
+          </ul>
+        </div>
+      </section>
+      <section className={styles["code-of-conduct"]}>
+        <div className={styles.wrapper}>
+          <h2>Code of conduct:</h2>
+          <p>Ware Business Club is exclusively designed as a way for local businesses to connect with each other and help each other grow. Be kind, be helpful.</p>
+        </div>
+      </section>
+      <section className={styles["working-bg-section"]}>
+        <Button className={styles.button} invertColor={true} goToUrl={mailTo}>Become a member</Button>
+      </section>
+      <footer className={styles.footer}>
+        <p>© 2024 Ware Business Club</p>
+        <p style={{ marginTop: "0.1rem" }}>
+          <a href="https://modestindustries.co/" target="_blank" title="Lovingly made by Modest Industries">A Modest Initiative <small>♥</small></a>
+        </p>
+      </footer>
+    </main >
   );
 }
