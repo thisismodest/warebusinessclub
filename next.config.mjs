@@ -19,7 +19,8 @@ const nextConfig = {
 
   distDir: 'dist',
   trailingSlash: true,
-  basePath: '/warebusinessclub'
+  basePath: '/warebusinessclub',
+  assetPrefix: '/warebusinessclub/'
 };
 
 export default nextConfig;
