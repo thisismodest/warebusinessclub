@@ -23,3 +23,32 @@ p {
 a {
   color: inherit;
 }
+
+h1 {
+  font-size: 3rem;
+  margin: 2rem 0;
+}
+
+h2 {
+  font-size: 1.3rem;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+}
+
+.wrapper {
+  position: relative;
+  padding: 0 1rem;
+  margin: auto;
+  max-width: var(--max-width);
+
+  & h2 {
+    margin-top: 0;
+    width: 100%;
+  }
+}
+
+@media (min-width: 35rem) {
+  h1 {
+    font-size: 4rem;
+  }
+}

@@ -1,0 +1,91 @@
+.form {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 20rem;
+  min-width: 12rem;
+  margin: auto;
+}
+
+.button {
+  margin-top: 1rem;
+}
+
+.header {
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  padding: 2rem;
+  margin: auto;
+
+  height: 80svh;
+
+  & h1 {
+    max-width: 33rem;
+    margin-top: 0;
+  }
+}
+
+.ware-town-svg {
+  position: fixed;
+  top: 50%;
+  margin-top: -35%;
+  right: -15%;
+  opacity: 0.6;
+  min-width: 50rem;
+  width: 80vw;
+  z-index: 0;
+  pointer-events: none;
+}
+
+.circle,
+.circle::before {
+  position: absolute;
+  content: " ";
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  margin: 0 auto;
+  transition: all 0.3s;
+  background-color: #c9e6dd;
+}
+
+.circle::before {
+  animation: flash 2s infinite;
+  position: absolute;
+  background-color: #c9e6dd
+}
+
+@media (min-width: 30rem) {
+  .header {
+    display: flex;
+    flex-wrap: nowrap;
+    /* padding: 5rem 3rem; */
+    justify-content: space-between;
+
+    & h1 {
+      padding-right: 3rem;
+    }
+  }
+}
+
+@media (min-width: 71.25rem) {
+  .header {
+    padding: 10rem 0;
+  }
+}
+
+
+@keyframes flash {
+  50% {
+    transform: scale(3);
+    opacity: 0
+  }
+
+  100% {
+    transform: scale(3);
+    opacity: 0
+  }
+}

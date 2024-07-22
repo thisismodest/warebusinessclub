@@ -9,26 +9,17 @@ export default function Home() {
   const mailTo = "mailto:businessclub@modestindustries.co?subject=I want to join Ware Business Club&body=Hello :)%0D%0APlease fill in the details below:%0D%0A%0D%0A%0D%0ABusiness name:%0D%0AWebsite:%0D%0AEmail:%0D%0AReason for wanting to join:%0D%0A";
 
   return (
-    <main className={styles.main}>
-      <nav className={styles.nav}>
-        <div className={styles["nav-inner-wrapper"]}>
-          <p className={styles.logo}>Ware Business Club</p>
-          <ul>
-            <li><a href="mailto:businessclub@modestindustries.co">Contact</a></li>
-            <li><a href="#">Login</a></li>
-          </ul>
-        </div>
-      </nav>
+    <>
       <section className={styles["intro-section"]}>
         <div className={styles["intro-wrapper"]}>
           <div className={styles.intro}>
             <h1 className={styles.header}>Thrive with other local business owners</h1>
 
-            <p>Elevate your business by joining Ware Business Club, your go-to network for growth and collaboration.</p>
+            <p>Elevate your business by becoming an exclusive Ware Business Club member, your local network for growth and collaboration.</p>
 
             <p>Connect with fellow entrepreneurs, share valuable insights, and enjoy exclusive member discounts. Together, we can help each other thrive.</p>
 
-            <Button className={styles.button} goToUrl={mailTo}>Become a member</Button>
+            <Button className={styles.button} goToUrl={mailTo}>Join now for free</Button>
 
             <p className={styles["beta-text"]}>During our beta program membership is <em>free for all businesses</em>.</p>
           </div>
@@ -50,7 +41,7 @@ export default function Home() {
         </div>
       </section>
       <section className={styles.requirements}>
-        <div className={styles.wrapper}>
+        <div className={"wrapper"}>
           <h2>Membership requirements:</h2>
           <ul>
             <li>
@@ -81,7 +72,7 @@ export default function Home() {
         </div>
       </section>
       <section className={styles["code-of-conduct"]}>
-        <div className={styles.wrapper}>
+        <div className={"wrapper"}>
           <h2>Code of conduct:</h2>
           <p>Ware Business Club is exclusively designed as a way for local businesses to connect with each other and help each other grow. Be kind, be helpful.</p>
         </div>
@@ -89,12 +80,6 @@ export default function Home() {
       <section className={styles["working-bg-section"]}>
         <Button className={styles.button} invertColor={true} goToUrl={mailTo}>Become a member</Button>
       </section>
-      <footer className={styles.footer}>
-        <p>© 2024 Ware Business Club</p>
-        <p style={{ marginTop: "0.1rem" }}>
-          <a href="https://modestindustries.co/" target="_blank" title="Lovingly made by Modest Industries">A Modest Initiative <small>♥</small></a>
-        </p>
-      </footer>
-    </main >
+    </>
   );
 }

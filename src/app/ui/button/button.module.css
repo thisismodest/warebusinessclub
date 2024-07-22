@@ -27,6 +27,23 @@
   }
 }
 
+.small {
+  font-size: 1rem;
+  padding: 0.5em;
+}
+
 .medium {
   font-size: 1.2rem;
+}
+
+& :disabled {
+  background-color: lightgrey;
+  color: grey;
+  border-color: grey;
+  cursor: not-allowed;
+
+  &:hover {
+    background-color: lightgrey;
+    color: grey;
+  }
 }

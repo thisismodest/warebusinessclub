@@ -1,77 +1,10 @@
-.main {
-  position: relative;
-  overflow: hidden;
-}
-
-.wrapper {
-  padding: 0 1rem;
-  margin: auto;
-  max-width: var(--max-width);
-
-  & h2 {
-    margin-top: 0;
-    width: 100%;
-
-    font-size: 1.3rem;
-    letter-spacing: 4px;
-    text-transform: uppercase;
-  }
-}
-
-.nav {
-  position: fixed;
-  z-index: 10;
-  width: 100%;
-  padding: 1rem;
-  background-color: #edfff9;
-  min-width: var(--min-width);
-
-  @supports (backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px)) {
-    background-color: #edfff990;
-    backdrop-filter: blur(16px);
-    -webkit-backdrop-filter: blur(16px);
-  }
-
-  & ul,
-  & li {
-    margin: 0;
-    padding: 0;
-  }
-
-  & ul {
-    display: flex;
-  }
-
-  & li {
-    list-style: none;
-    margin-right: 1rem;
-  }
-}
-
-.nav-inner-wrapper {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
-  align-items: center;
-  max-width: var(--max-width);
-  margin: auto;
-}
-
-.logo {
-  margin: 0;
-  margin-right: 1rem;
-}
-
 .intro-section {
   display: flex;
   position: relative;
   width: 100%;
   max-width: var(--max-width);
-  min-height: 100svh;
+  min-height: calc(100svh - 3.2rem);
   align-content: center;
-  /* padding: 2rem;
-  box-sizing: border-box;
-  border-radius: 3rem; */
   margin: auto;
   padding: 3.5rem 1rem;
 }
@@ -83,20 +16,19 @@
   margin: auto 0;
 }
 
+.header {
+  padding-right: 2rem;
+}
+
 .intro {
   position: relative;
   z-index: 5;
   max-width: 100%;
   font-size: 1.2rem;
-
-  & h1 {
-    font-size: 3rem;
-    margin: 2rem 0;
-    padding-right: 2rem;
-  }
 }
 
 .intro-svg {
+  pointer-events: none;
   position: absolute;
   top: 4rem;
   right: -35%;
@@ -159,22 +91,6 @@
   font-size: 4rem;
 }
 
-.footer {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-  border-top: 1px solid #0f2528;
-  padding: 1rem;
-  width: 100%;
-  margin: auto;
-  font-size: 0.8rem;
-
-  & p {
-    margin: 0;
-  }
-}
-
 .code-of-conduct {
   text-align: center;
   padding: 3.5rem 0;
@@ -196,6 +112,7 @@
   justify-content: center;
   background-image: url('/warebusinessclub/img/ware-business-club-bg.jpg');
   background-size: cover;
+  background-position: center;
 
   height: 25rem;
 }
@@ -230,19 +147,8 @@
     margin-top: -35%;
   }
 
-  .nav {
-    & li {
-      margin-right: 0;
-      margin-left: 1rem;
-    }
-  }
-
   .intro {
     width: 32rem;
-
-    & h1 {
-      font-size: 4rem;
-    }
   }
 
   .circle,

@@ -1,0 +1,79 @@
+.main {
+  position: relative;
+  overflow: hidden;
+  padding-top: 3.25rem;
+}
+
+.nav {
+  position: fixed;
+  z-index: 10;
+  width: 100%;
+  padding: 1rem;
+  background-color: #edfff9;
+  min-width: var(--min-width);
+
+  @supports (backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px)) {
+    background-color: #edfff990;
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+  }
+
+  & ul,
+  & li {
+    margin: 0;
+    padding: 0;
+  }
+
+  & ul {
+    display: flex;
+  }
+
+  & li {
+    list-style: none;
+    margin-right: 1rem;
+  }
+}
+
+.nav-inner-wrapper {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  max-width: var(--max-width);
+  margin: auto;
+}
+
+.logo {
+  margin: 0;
+  margin-right: 1rem;
+
+  & a {
+    text-decoration: none;
+  }
+}
+
+.footer {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  padding: 1rem;
+  width: 100%;
+  margin: auto;
+  font-size: 0.8rem;
+
+  & p {
+    margin: 0;
+  }
+}
+
+
+@media (min-width: 35rem) {
+  .nav {
+    & li {
+      margin-right: 0;
+      margin-left: 1rem;
+    }
+  }
+}
