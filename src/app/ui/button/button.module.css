@@ -2,6 +2,8 @@
   cursor: pointer;
   display: inline-block;
 
+  color: inherit;
+
   border: 0.2em solid #0f2528;
   padding: 1em 3em;
   background-color: transparent;
