@@ -69,6 +69,10 @@
       padding-right: 3rem;
     }
   }
+
+  .form {
+    margin-right: 0;
+  }
 }
 
 @media (min-width: 71.25rem) {
