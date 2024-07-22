@@ -10,6 +10,9 @@ const roboto = Roboto({ subsets: ["latin"], weight: "400" });
 export const metadata: Metadata = {
   title: "Ware Business Club",
   description: "An exclusive club for Ware business owners",
+  icons: {
+    icon: '/favicon.png',
+  },
 };
 
 export default function RootLayout({
