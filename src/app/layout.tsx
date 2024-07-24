@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Roboto } from "next/font/google";
+import { GoogleAnalytics } from '@next/third-parties/google'
 import "./globals.css";
 
 import styles from "./layout.module.css";
@@ -22,6 +23,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
+      <GoogleAnalytics gaId="G-BE5837SESR" />
       <body className={roboto.className}>
         <nav className={styles.nav}>
           <div className={styles["nav-inner-wrapper"]}>
