@@ -4,7 +4,7 @@
 
   color: inherit;
 
-  border: 0.2em solid #0f2528;
+  border: 0.2em solid var(--dark-color);
   padding: 1em 3em;
   background-color: transparent;
   border-radius: 10rem;
@@ -14,18 +14,18 @@
   text-decoration: none;
 
   &:hover {
-    background-color: #0f2528;
+    background-color: var(--dark-color);
     color: #edfff9;
   }
 }
 
 .invert {
-  background-color: #0f2528;
+  background-color: var(--dark-color);
   color: #edfff9;
 
   &:hover {
     background-color: #edfff9;
-    color: #0f2528;
+    color: var(--dark-color);
   }
 }
 

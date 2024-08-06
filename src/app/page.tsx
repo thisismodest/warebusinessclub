@@ -42,7 +42,7 @@ export default function Home() {
       </section>
       <section className={styles.requirements}>
         <div className={"wrapper"}>
-          <h2>Membership requirements:</h2>
+          <h2 className="section-title">Membership requirements:</h2>
           <ul>
             <li>
               <div className={styles["emoji-icon"]}>🏢</div>
@@ -73,7 +73,7 @@ export default function Home() {
       </section>
       <section className={styles["code-of-conduct"]}>
         <div className={"wrapper"}>
-          <h2>Code of conduct:</h2>
+          <h2 className="section-title">Code of conduct:</h2>
           <p>Ware Business Club is exclusively designed as a way for local businesses to connect with each other and help each other grow. Be kind, be helpful.</p>
         </div>
       </section>

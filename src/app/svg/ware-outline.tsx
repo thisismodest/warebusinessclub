@@ -1,5 +1,3 @@
-import { ReactElement } from "react";
-
 interface SVGProps {
   strokeColor?: string;
   strokeWidth?: number;

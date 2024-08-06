@@ -1,0 +1,60 @@
+/* increase in 0.25 increments  */
+.size1 {
+  width: .25rem;
+  height: .25rem;
+}
+
+.size2 {
+  width: .5rem;
+  height: .5rem;
+}
+
+.size3 {
+  width: .75rem;
+  height: .75rem;
+}
+
+.size4 {
+  width: 1rem;
+  height: 1rem;
+}
+
+.size5 {
+  width: 1.25rem;
+  height: 1.25rem;
+}
+
+.size6 {
+  width: 1.5rem;
+  height: 1.5rem;
+}
+
+.size7 {
+  width: 1.75rem;
+  height: 1.75rem;
+}
+
+.size8 {
+  width: 2rem;
+  height: 2rem;
+}
+
+.size9 {
+  width: 2.25rem;
+  height: 2.25rem;
+}
+
+.size10 {
+  width: 2.5rem;
+  height: 2.5rem;
+}
+
+.size11 {
+  width: 2.75rem;
+  height: 2.75rem;
+}
+
+.size12 {
+  width: 3rem;
+  height: 3rem;
+}

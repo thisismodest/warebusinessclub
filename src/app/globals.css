@@ -1,6 +1,7 @@
 :root {
   --max-width: 62.5rem;
-  --min-width: 21rem;
+  --min-width: 18rem;
+  --dark-color: #0f2528;
 }
 
 * {
@@ -12,7 +13,7 @@ body {
   margin: 0;
   padding: 0;
   background-color: #edfff9;
-  color: #0f2528;
+  color: var(--dark-color);
   min-width: var(--min-width);
 }
 
@@ -24,6 +25,12 @@ a {
   color: inherit;
 }
 
+h1,
+h2 {
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
 h1 {
   font-size: 3rem;
   margin: 0;
@@ -31,6 +38,9 @@ h1 {
 
 h2 {
   font-size: 1.3rem;
+}
+
+h2.section-title {
   letter-spacing: 4px;
   text-transform: uppercase;
 }
