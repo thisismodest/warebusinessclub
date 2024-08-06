@@ -1,12 +1,14 @@
 'use client'
 
 import styles from '@/app/login/login.module.css';
-// import pageStyles from '@/app/page.module.css';
 import WareOutline from "@/app/svg/ware-outline";
 
 import Button from '../ui/button/button';
 import Input from '../ui/input/input';
 import { useState } from 'react';
+
+// server actions
+import { createUser } from '../lib/user-data';
 
 export default function Page() {
   const mailTo = "mailto:businessclub@modestindustries.co?subject=I want to join Ware Business Club&body=Hello :)%0D%0APlease fill in the details below:%0D%0A%0D%0A%0D%0ABusiness name:%0D%0AWebsite:%0D%0AEmail:%0D%0AReason for wanting to join:%0D%0A";
@@ -14,7 +16,7 @@ export default function Page() {
   const [errorMessage, setErrorMessage] = useState("");
   const [loading, setLoading] = useState(false);
 
-  const handleSubmit = (e: any) => {
+  const handleSubmit = async (e: any) => {
     e.preventDefault();
 
     setErrorMessage("");
@@ -27,6 +29,18 @@ export default function Page() {
       setErrorMessage("Email or password is missing")
     } else {
       setLoading(true);
+
+      try {
+        const u = await createUser({
+          name: "New user",
+          email: formJson.email.toString(),
+          password: formJson.password.toString()
+        });
+
+        console.log({ u });
+      } catch (e) {
+        console.log(e);
+      }
       setTimeout(() => {
         setLoading(false);
         setErrorMessage("Unsuccessful attempt");

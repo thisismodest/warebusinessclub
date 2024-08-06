@@ -1,17 +1,17 @@
 services:
-  app:
-    container_name: app
-    image: app
-    build:
-      # context: ./src/app
-      dockerfile: ./docker/app.dockerfile
-    ports:
-      - '3000:3000'
-    environment:
-      - NEXT_PUBLIC_API_URL=http://localhost:4000
-    restart: always
-    depends_on:
-      - postgres
+  # app:
+  #   container_name: app
+  #   image: app
+  #   build:
+  #     # context: ./src/app
+  #     dockerfile: ./docker/app.dockerfile
+  #   ports:
+  #     - '3000:3000'
+  #   environment:
+  #     - NEXT_PUBLIC_API_URL=http://localhost:4000
+  #   restart: always
+  #   depends_on:
+  #     - postgres
 
   postgres:
     container_name: postgres
