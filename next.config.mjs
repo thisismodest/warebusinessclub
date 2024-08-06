@@ -5,7 +5,7 @@ const nextConfig = {
    *
    * @see https://nextjs.org/docs/app/building-your-application/deploying/static-exports
    */
-  output: "export",
+  output: "standalone",
 
   /**
    * Disable server-based image optimization. Next.js does not support
@@ -17,7 +17,6 @@ const nextConfig = {
     unoptimized: true,
   },
 
-  distDir: 'dist',
   trailingSlash: true,
 };
 
