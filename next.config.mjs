@@ -18,6 +18,10 @@ const nextConfig = {
   },
 
   trailingSlash: true,
+
+  // experimental: {
+  //   ppr: 'incremental'
+  // }
 };
 
 export default nextConfig;

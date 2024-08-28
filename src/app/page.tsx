@@ -1,10 +1,17 @@
-"use client"
+
 
 import styles from "./page.module.css";
 import Button from "./ui/button/button";
 import WareOutline from "./svg/ware-outline";
 
-export default function Home() {
+import { auth } from "@/auth";
+
+
+export default async function Home() {
+
+  const session = await auth();
+
+  console.log(session);
 
   const mailTo = "mailto:businessclub@modestindustries.co?subject=I want to join Ware Business Club&body=Hello :)%0D%0APlease fill in the details below:%0D%0A%0D%0A%0D%0ABusiness name:%0D%0AWebsite:%0D%0AEmail:%0D%0AReason for wanting to join:%0D%0A";
 

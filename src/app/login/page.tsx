@@ -1,52 +1,10 @@
-'use client'
-
 import styles from '@/app/login/login.module.css';
 import WareOutline from "@/app/svg/ware-outline";
 
-import Button from '../ui/button/button';
-import Input from '../ui/input/input';
-import { useState } from 'react';
+import SignIn from '../components/auth/signin-button';
 
-// server actions
-import { createUser } from '../lib/user-data';
-
-export default function Page() {
+export default async function Page() {
   const mailTo = "mailto:businessclub@modestindustries.co?subject=I want to join Ware Business Club&body=Hello :)%0D%0APlease fill in the details below:%0D%0A%0D%0A%0D%0ABusiness name:%0D%0AWebsite:%0D%0AEmail:%0D%0AReason for wanting to join:%0D%0A";
-
-  const [errorMessage, setErrorMessage] = useState("");
-  const [loading, setLoading] = useState(false);
-
-  const handleSubmit = async (e: any) => {
-    e.preventDefault();
-
-    setErrorMessage("");
-
-    const form = e.currentTarget;
-    const formData = new FormData(form);
-    const formJson = Object.fromEntries(formData.entries());
-
-    if (!formJson.email || !formJson.password) {
-      setErrorMessage("Email or password is missing")
-    } else {
-      setLoading(true);
-
-      try {
-        const u = await createUser({
-          name: "New user",
-          email: formJson.email.toString(),
-          password: formJson.password.toString()
-        });
-
-        console.log({ u });
-      } catch (e) {
-        console.log(e);
-      }
-      setTimeout(() => {
-        setLoading(false);
-        setErrorMessage("Unsuccessful attempt");
-      }, 500);
-    }
-  }
 
   return <>
     <WareOutline
@@ -66,15 +24,7 @@ export default function Page() {
     </WareOutline>
     <section className={`wrapper ${styles.header}`}>
       <h1>Login to your local business network</h1>
-      <form method="post" className={styles.form} onSubmit={handleSubmit}>
-        <Input id="email" name="email" labelName='Email address' placeholder="email address" type="email" />
-        <Input id="password" name="password" labelName='Password' placeholder="password" type="password" />
-        <span style={{ color: "red" }}>{errorMessage}</span>
-        <Button type="submit" submitText={!loading ? "Log in" : "Logging in..."} disabled={loading} onClick={handleSubmit} className={styles.button} size='small' />
-      </form>
+      <SignIn />
     </section>
-    {/* <section className={pageStyles["working-bg-section"]}>
-      <Button className={pageStyles.button} invertColor={true} goToUrl={mailTo}>Become a member</Button>
-    </section> */}
   </>
 }
