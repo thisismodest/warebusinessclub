@@ -1,4 +1,4 @@
-import ProfileCard from "../ui/profile-card/profile-card";
+import ProfileCard from "@/app/ui/profile-card/profile-card";
 
 export default function Page() {
   return (

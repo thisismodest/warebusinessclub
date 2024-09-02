@@ -1,17 +1,17 @@
-
-
 import styles from "./page.module.css";
 import Button from "./ui/button/button";
 import WareOutline from "./svg/ware-outline";
 
 import { auth } from "@/auth";
-
+import { redirect } from 'next/navigation';
 
 export default async function Home() {
 
   const session = await auth();
 
-  console.log(session);
+  if (session) {
+    return redirect("/dashboard");
+  }
 
   const mailTo = "mailto:businessclub@modestindustries.co?subject=I want to join Ware Business Club&body=Hello :)%0D%0APlease fill in the details below:%0D%0A%0D%0A%0D%0ABusiness name:%0D%0AWebsite:%0D%0AEmail:%0D%0AReason for wanting to join:%0D%0A";
 

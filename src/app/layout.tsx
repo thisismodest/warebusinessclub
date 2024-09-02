@@ -6,6 +6,9 @@ import "./globals.css";
 import styles from "./layout.module.css";
 import Link from "next/link";
 
+import { auth } from "@/auth";
+import { SignOut } from "./components/auth/signout-button";
+
 const roboto = Roboto({ subsets: ["latin"], weight: "400" });
 
 export const metadata: Metadata = {
@@ -16,28 +19,45 @@ export const metadata: Metadata = {
   },
 };
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+
+  const session = await auth();
+
   return (
     <html lang="en">
       <GoogleAnalytics gaId="G-BE5837SESR" />
       <body className={roboto.className}>
+        {/* Navigation */}
         <nav className={styles.nav}>
           <div className={styles["nav-inner-wrapper"]}>
             <p className={styles.logo}><Link href="/">Ware Business Club</Link></p>
             <ul>
-              <li><a href="mailto:businessclub@modestindustries.co">Contact</a></li>
-              <li><Link href="/login/">Login</Link></li>
+              {
+                session ?
+                  <>
+                    <li><Link href="/profile/">{session.user?.name || "My account"}</Link></li>
+                    <li><SignOut /></li>
+                  </>
+                  :
+                  <>
+                    <li><a href="mailto:businessclub@modestindustries.co">Contact</a></li>
+                    <li><Link href="/login/">Login</Link></li>
+                  </>
+              }
             </ul>
           </div>
         </nav>
+
+        {/* Main content */}
         <main className={styles.main}>
           {children}
-
         </main >
+
+        {/* Footer */}
         <footer className={styles.footer}>
           <p>© 2024 Ware Business Club</p>
           <p style={{ marginTop: "0.1rem" }}>
