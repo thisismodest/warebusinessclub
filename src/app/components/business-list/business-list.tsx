@@ -14,10 +14,14 @@ const BusinessListItem = (props: any) => {
   const { photo, businessName, humanName, profileUrl } = props;
   return (
     <li className={styles.business}>
-      {photo && <img className={styles.photo} src={photo} />}
-      <p className={styles["business-name"]}>{businessName}</p>
-      <p>{humanName}</p>
-      <a href={`/profile/${profileUrl}`}>(&gt;)</a>
+      <a className={styles['details-wrapper']} href={`/profile/${profileUrl}`}>
+        {photo && <img className={styles.photo} src={photo} />}
+        <div className={styles.details}>
+          <p className={styles["human-name"]}>{humanName}</p>
+          <p className={styles["business-name"]}>{businessName}</p>
+        </div>
+        <div className={styles.arrow}></div>
+      </a>
     </li>
   )
 }
