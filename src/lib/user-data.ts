@@ -53,7 +53,6 @@ export const getBusinesses = async (userId: string | undefined) => {
   try {
     const Businesses = await prisma.user.findMany({
       where: {
-        // businessName: { not: null },
         id: { not: userId }
       },
       select: {
