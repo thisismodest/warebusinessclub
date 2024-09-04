@@ -1,9 +1,7 @@
 .businesses {
-  /* display: flex; */
   display: block;
   padding: 0;
   margin: 0;
-  padding: 1rem;
 }
 
 .business {
@@ -13,16 +11,25 @@
 
   list-style: none;
 
-  border: 1px solid var(--dark-color);
+  background-color: #0f252815;
   border-radius: 0.5rem;
 
   max-width: 25rem;
+
+  &:hover {
+    background-color: #0f252825;
+
+  }
 }
 
-.photo {
-  max-width: 3rem;
+.image {
+  width: 3rem;
+  height: 3rem;
+  font-size: 0.6rem;
+  background-color: white;
   border-radius: 100%;
   margin-right: 1rem;
+  border: 1px solid var(--dark-color);
 }
 
 .business-name,
@@ -45,7 +52,7 @@
   height: 0.5rem;
   border-top: 2px solid var(--dark-color);
   border-right: 2px solid var(--dark-color);
-
+  margin-right: 0.5rem;
   transform: rotate(45deg);
 }
 

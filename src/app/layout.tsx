@@ -39,6 +39,7 @@ export default async function RootLayout({
               {
                 session ?
                   <>
+                    <li><Link href="/dashboard/">Dashboard</Link></li>
                     <li><Link href="/profile/">{session.user?.name || "My account"}</Link></li>
                     <li><SignOut /></li>
                   </>

@@ -33,7 +33,13 @@
     list-style: none;
     margin-right: 1rem;
   }
+
+  /* Temporary scroll nav for smaller screens */
+  overflow-x: auto;
+  scrollbar-width: thin;
+  scrollbar-color: #0f252815 transparent;
 }
+
 
 .nav-inner-wrapper {
   display: flex;
@@ -42,6 +48,10 @@
   align-items: center;
   max-width: var(--max-width);
   margin: auto;
+
+  /* Temporary scroll nav for smaller screens */
+  min-width: 38rem;
+  overflow: hidden;
 }
 
 .logo {

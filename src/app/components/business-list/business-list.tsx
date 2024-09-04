@@ -1,24 +1,23 @@
 import styles from "@/app/components/business-list/business-list.module.css";
-import { profile } from "console";
 
 interface BusinessListProps {
   businesses: {
-    photo?: string;
-    businessName: string;
+    image: string;
+    businessName: string | null;
     humanName: string;
     profileUrl: string;
   }[]
 }
 
 const BusinessListItem = (props: any) => {
-  const { photo, businessName, humanName, profileUrl } = props;
+  const { image, businessName, humanName, profileUrl } = props;
   return (
     <li className={styles.business}>
       <a className={styles['details-wrapper']} href={`/profile/${profileUrl}`}>
-        {photo && <img className={styles.photo} src={photo} />}
+        {image && <img className={styles.image} src={image} alt={`Image for ${businessName}`} />}
         <div className={styles.details}>
           <p className={styles["human-name"]}>{humanName}</p>
-          <p className={styles["business-name"]}>{businessName}</p>
+          {businessName && <p className={styles["business-name"]}>{businessName}</p>}
         </div>
         <div className={styles.arrow}></div>
       </a>
@@ -35,7 +34,7 @@ const BusinessList = (props: BusinessListProps) => {
           (business) =>
             <BusinessListItem
               key={business.businessName}
-              photo={business.photo}
+              image={business.image}
               businessName={business.businessName}
               humanName={business.humanName}
               profileUrl={business.profileUrl}

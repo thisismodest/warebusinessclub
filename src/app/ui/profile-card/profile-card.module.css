@@ -15,6 +15,7 @@
   overflow: hidden;
   line-height: 0;
   margin: auto;
+  background-color: white;
 
   & img {
     max-width: 100%;

@@ -1,7 +1,7 @@
-// 'use server'
+'use server'
 
-// import { Prisma } from '@prisma/client'
-// import { prisma } from "@/prisma";
+import { Prisma } from '@prisma/client'
+import { prisma } from "@/prisma";
 
 // export const createUser = async (email: string, password: string) => {
 
@@ -47,3 +47,57 @@
 //   }
 
 // };
+
+export const getBusinesses = async (userId: string | undefined) => {
+  // Get all businesses profile's except the person who's requesting it
+  try {
+    const Businesses = await prisma.user.findMany({
+      where: {
+        // businessName: { not: null },
+        id: { not: userId }
+      },
+      select: {
+        id: true,
+        image: true,
+        businessName: true,
+        name: true,
+        profileUrl: true,
+      }
+    });
+
+    return Businesses
+  } catch (e) {
+    throw e;
+  }
+}
+
+export const getUserProfile = async (profileId?: string) => {
+  try {
+    const User = await prisma.user.findFirst({
+      where: {
+        OR: [
+          { id: profileId },
+          { profileUrl: profileId }
+        ]
+      },
+      select: {
+        name: true,
+        email: true,
+        image: true,
+        businessName: true,
+        phoneNumber: true,
+        businessEmail: true,
+        website: true,
+        socials: true, // this is jsonb
+        description: true,
+        businessLoc: true,
+        businessMap: true,
+        profileUrl: true,
+      }
+    });
+
+    return User
+  } catch (e) {
+    throw e;
+  }
+}
