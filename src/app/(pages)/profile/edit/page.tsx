@@ -5,58 +5,87 @@ import ProfileDetailsForm from "@/app/components/profile-details-form/profile-de
 import FormModal from "@/app/components/form-modal/form-modal";
 
 import { auth } from "@/auth";
+import { updateUserProfile } from "@/lib/user-data";
+import { revalidatePath } from "next/cache";
 import { redirect } from "next/navigation";
 
 export default async function Page() {
 
   const session = await auth();
-  if (!session?.user) return redirect("/login");
+  if (!session?.user?.id) return redirect("/login");
 
-  const { id } = session.user;
+  const { id: userId } = session.user;
+
 
   const formFields = [
     {
-      inputId: "personal-name",
+      inputId: "name",
       inputLabel: "What do you like to be called?",
-      inputPlaceholder: "Jane Doe",
+      inputPlaceholder: session.user?.name || "Jane Doe",
     },
     {
-      inputId: "business-name",
+      inputId: "businessName",
       inputLabel: "Company Name",
-      inputPlaceholder: "Ware Business Club Ltd",
+      inputPlaceholder: session.user?.businessName || "Ware Business Club Ltd",
     },
     {
-      inputId: "business-email",
+      inputId: "businessEmail",
       inputLabel: "Company email address",
-      // inputValue: "",
+      inputPlaceholder: session.user?.businessEmail || "jane.doe@example.com",
       inputType: "email",
-      inputPlaceholder: "jane.doe@example.com",
     },
     {
-      inputId: "personal-phone",
+      inputId: "phoneNumber",
       inputLabel: "Your phone number (ideally one that matches the WhatsApp group)",
-      // inputValue: "",
+      inputPlaceholder: session.user?.phoneNumber || "07777 777 777",
       inputType: "tel",
-      inputPlaceholder: "07777 777 777",
     },
     {
-      inputId: "business-map",
+      inputId: "businessLoc",
+      inputLabel: "Business address",
+      inputType: "address",
+      inputPlaceholder: session.user?.businessLoc || "123 Star Street, Ware, Sg12 XXX",
+    },
+    {
+      inputId: "businessMap",
       inputLabel: "Google Maps embed URL",
-      // inputValue: "",
-      inputPlaceholder: "jane.doe@example.com",
+      inputPlaceholder: session.user?.businessMap || "https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d39468.40064683778!2d-0.038486!3d51.810271!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47d8821561722129%3A0x341d9150b6621ddd!2sWare!5e0!3m2!1sen!2suk!4v1726700789799!5m2!1sen!2suk",
     },
     {
-      inputId: "business-description",
-      inputLabel: "Company Name",
-      inputPlaceholder: "Ware Business Club Ltd",
+      inputId: "description",
+      inputLabel: "Description of you and the company",
+      inputPlaceholder: session.user?.description || "Some details about what you and your company do",
     },
-  ]
+    {
+      inputId: "profileUrl",
+      inputLabel: "Custom profile url",
+      inputPlaceholder: session.user?.profileUrl || "your-business-name",
+    },
+  ];
+
+  const formAction = async (data: any) => {
+    "use server";
+
+    if (Object.keys(data).length < 1) return;
+    console.log(data);
+
+    try {
+      const updatedUser = await updateUserProfile(userId, data);
+      console.log({ updatedUser });
+
+    } catch (e) {
+      throw e;
+    }
+    revalidatePath('/profile/edit');
+    redirect('/profile/edit');
+  }
+
   return (
     <section style={{ paddingBottom: "5rem" }}>
 
-      <FormModal formFields={formFields} formAction={() => { console.log("hey") }} />
+      <FormModal formFields={formFields} formAction={formAction} />
 
-      <ProfileCard profileId={id} />
+      <ProfileCard profileId={userId} />
 
       {/* <ProfileDetailsForm profileId={id} /> */}
     </section>

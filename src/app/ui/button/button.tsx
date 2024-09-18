@@ -18,24 +18,21 @@ export default function Button(props: ButtonProps) {
   let size = props.size || "large";
 
   return (
-    (type === "submit") ? <Input id="submit" type="submit" value={submitText} className={`${styles.button} ${styles[size]} ${props.className}`}
-      disabled={disabled} />
+    goToUrl ?
+      <a
+        className={`${styles.button} ${styles[size]} ${props.className} ${invertColor && styles["invert"]}`
+        }
+        href={props.goToUrl} >
+        {children}
+      </a >
       :
-      goToUrl ?
-        <a
-          className={`${styles.button} ${styles[size]} ${props.className} ${invertColor && styles["invert"]}`
-          }
-          href={props.goToUrl} >
-          {children}
-        </a >
-        :
-        <button
-          className={`${styles.button} ${styles[size]} ${props.className}`}
-          disabled={disabled}
-          {...rest}
-          onClick={onClick}>
-          {children}
-        </button>
+      <button
+        className={`${styles.button} ${styles[size]} ${props.className}`}
+        disabled={disabled}
+        {...rest}
+        onClick={onClick}>
+        {children}
+      </button>
 
 
   );

@@ -3,6 +3,16 @@
 import { Prisma } from '@prisma/client'
 import { prisma } from "@/prisma";
 
+import { auth } from "@/auth";
+
+
+const userAllowed = async (userId: string) => {
+  const session = await auth();
+  if (!session || !session?.user) return false;
+  if (session.user?.id !== userId) return false;
+
+  return true;
+}
 // export const createUser = async (email: string, password: string) => {
 
 //   try {
@@ -50,6 +60,7 @@ import { prisma } from "@/prisma";
 
 export const getBusinesses = async (userId: string | undefined) => {
   // Get all businesses profile's except the person who's requesting it
+
   try {
     const Businesses = await prisma.user.findMany({
       where: {
@@ -75,9 +86,19 @@ export const getUserProfile = async (profileId?: string) => {
     const User = await prisma.user.findFirst({
       where: {
         OR: [
-          { id: profileId },
-          { profileUrl: profileId }
-        ]
+          {
+            id: {
+              equals: profileId,
+              mode: 'insensitive'
+            },
+          },
+          {
+            profileUrl: {
+              equals: profileId,
+              mode: 'insensitive'
+            }
+          }
+        ],
       },
       select: {
         name: true,
@@ -95,7 +116,24 @@ export const getUserProfile = async (profileId?: string) => {
       }
     });
 
-    return User
+    return User;
+  } catch (e) {
+    throw e;
+  }
+}
+
+export const updateUserProfile = async (userId: string, updateData: any) => {
+  if (!await userAllowed(userId)) return false;
+
+  try {
+    const User = await prisma.user.update({
+      where: {
+        id: userId
+      },
+      data: updateData,
+    });
+
+    return User;
   } catch (e) {
     throw e;
   }

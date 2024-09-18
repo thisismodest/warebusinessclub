@@ -1,0 +1,9 @@
+.form {
+  display: flex;
+  flex-wrap: wrap;
+
+  max-width: 30rem;
+  margin: auto;
+  flex-direction: row;
+  padding: 2rem;
+}
