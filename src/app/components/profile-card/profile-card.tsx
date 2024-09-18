@@ -1,7 +1,7 @@
 "use server"
 
 import styles from './profile-card.module.css';
-import HeroIcon from '../hero-icon/hero-icon';
+import HeroIcon from '../../ui/hero-icon/hero-icon';
 import Image from 'next/image';
 import { getUserProfile } from "@/lib/user-data";
 
@@ -48,8 +48,6 @@ export default async function ProfileCard({ profileId }: { profileId: string }) 
           );
       }
     });
-
-    console.log(props.socials, { socialList });
 
     return socialList;
   }

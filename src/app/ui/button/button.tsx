@@ -15,7 +15,7 @@ interface ButtonProps {
 }
 export default function Button(props: ButtonProps) {
   const { onClick, goToUrl, children, invertColor, disabled, type, submitText, ...rest } = props;
-  let size = props.size || "medium";
+  let size = props.size || "large";
 
   return (
     (type === "submit") ? <Input id="submit" type="submit" value={submitText} className={`${styles.button} ${styles[size]} ${props.className}`}

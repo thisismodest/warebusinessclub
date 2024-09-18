@@ -35,6 +35,11 @@
 }
 
 .medium {
+  font-size: 1rem;
+  padding: 0.6em 1.6em;
+}
+
+.large {
   font-size: 1.2rem;
 }
 

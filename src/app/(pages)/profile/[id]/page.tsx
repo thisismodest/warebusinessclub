@@ -1,5 +1,5 @@
 'use server'
-import ProfileCard from "@/app/ui/profile-card/profile-card";
+import ProfileCard from "@/app/components/profile-card/profile-card";
 import { auth } from "@/auth";
 import { redirect } from "next/navigation";
 
