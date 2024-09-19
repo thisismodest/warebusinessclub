@@ -1,7 +1,5 @@
 'use server'
 import ProfileCard from "@/app/components/profile-card/profile-card";
-import ProfileDetailsForm from "@/app/components/profile-details-form/profile-details-form";
-
 import FormModal from "@/app/components/form-modal/form-modal";
 
 import { auth } from "@/auth";
@@ -14,7 +12,7 @@ export default async function Page() {
   const session = await auth();
   if (!session?.user?.id) return redirect("/login");
 
-  const { id: userId } = session.user;
+  const { id: userId, profileUrl } = session.user;
 
 
   const formFields = [
@@ -54,6 +52,7 @@ export default async function Page() {
     {
       inputId: "description",
       inputLabel: "Description of you and the company",
+      inputType: "textarea",
       inputPlaceholder: session.user?.description || "Some details about what you and your company do",
     },
     {
@@ -76,17 +75,13 @@ export default async function Page() {
     } catch (e) {
       throw e;
     }
-    revalidatePath('/profile/edit');
-    redirect('/profile/edit');
+    revalidatePath(`/profile/${profileUrl || userId}`);
+    redirect(`/profile/${profileUrl || userId}`);
   }
 
   return (
     <section style={{ paddingBottom: "5rem" }}>
-
-      <FormModal formFields={formFields} formAction={formAction} />
-
-      <ProfileCard profileId={userId} />
-
+      <FormModal formFields={formFields} formAction={formAction} ctaText="Save and go to profile" />
       {/* <ProfileDetailsForm profileId={id} /> */}
     </section>
   );

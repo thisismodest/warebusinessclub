@@ -14,8 +14,6 @@
   background-color: #0f252815;
   border-radius: 0.5rem;
 
-  max-width: 25rem;
-
   &:hover {
     background-color: #0f252825;
 
@@ -24,7 +22,9 @@
 
 .image {
   width: 3rem;
+  min-width: 3rem;
   height: 3rem;
+  min-height: 3rem;
   font-size: 0.6rem;
   background-color: white;
   border-radius: 100%;

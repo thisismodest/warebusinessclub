@@ -14,7 +14,9 @@ export default function Input(props: InputProps) {
   return (
     <>
       {labelName && <label className={styles['label-name']} htmlFor={id}>{labelName}</label >}
-      <input className={styles.input} type={type || 'text'} id={id} name={name || id} defaultValue={defaultValue} {...rest} />
+      {type === 'textarea' ?
+        <textarea className={styles.input} id={id} name={name || id} defaultValue={defaultValue} {...rest} />
+        : <input className={styles.input} type={type || 'text'} id={id} name={name || id} defaultValue={defaultValue} {...rest} />}
     </>
   )
 }

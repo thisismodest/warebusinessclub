@@ -4,8 +4,9 @@ import styles from './profile-card.module.css';
 import HeroIcon from '../../ui/hero-icon/hero-icon';
 import Image from 'next/image';
 import { getUserProfile } from "@/lib/user-data";
+import Link from 'next/link';
 
-export default async function ProfileCard({ profileId }: { profileId: string }) {
+export default async function ProfileCard({ profileId, editable }: { profileId: string, editable?: boolean }) {
 
   const details = await getUserProfile(profileId);
 
@@ -60,8 +61,10 @@ export default async function ProfileCard({ profileId }: { profileId: string }) 
             <Image width="160" height="160" className="profile-card__avatar--img" src={details?.image || "/img/placeholder-avatar.jpg"} alt={details?.name || "Mysterious business owner"} />
           </div>
 
-          {details.name && <h1 className={styles.name}>{details.name}</h1>}
 
+
+          {editable && <Link style={{ display: "block", paddingTop: "1rem" }} href="/profile/edit">Edit profile ✐</Link>}
+          {details.name && <h1 className={styles.name}>{details.name}</h1>}
           <ul className={styles.details}>
             {
               details.businessName &&
@@ -117,7 +120,7 @@ export default async function ProfileCard({ profileId }: { profileId: string }) 
           }
         </header>
 
-        <section className={styles.highlights}>
+        {/* <section className={styles.highlights}>
           <div className={styles['highlight-card']}>
             <h2>I can advise on</h2>
             <ul>
@@ -143,8 +146,8 @@ export default async function ProfileCard({ profileId }: { profileId: string }) 
               <li>Catering for company meetings</li>
             </ul>
           </div>
+        </section> */}
 
-        </section>
         <section>
           <iframe className={styles.map} src={details.businessMap || "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d19734.200498558825!2d-0.03848605!3d51.810270599999996!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47d8821561722129%3A0x341d9150b6621ddd!2sWare!5e0!3m2!1sen!2suk!4v1725457566616!5m2!1sen!2suk"} loading="lazy" referrerPolicy="no-referrer-when-downgrade"></iframe>
           {

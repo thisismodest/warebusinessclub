@@ -36,7 +36,7 @@ const FormFields = ({ fields }: { fields: FormFields[] }) => {
 };
 
 
-export default async function FormModal({ formFields, formAction }: { formFields: FormFields[], formAction(data: Record<string, any>): void }) {
+export default async function FormModal({ formFields, formAction, ctaText }: { formFields: FormFields[], formAction(data: Record<string, any>): void, ctaText?: string }) {
 
   const handleFormAction = async (formData: FormData) => {
     "use server";
@@ -57,7 +57,7 @@ export default async function FormModal({ formFields, formAction }: { formFields
   return (
     <form action={handleFormAction} className={styles.form}>
       <FormFields fields={formFields} />
-      <Button type="submit" size='medium'>Save changes</Button>
+      <Button type="submit" size='medium'>{ctaText || "Submit"}</Button>
     </form>
   )
 }
