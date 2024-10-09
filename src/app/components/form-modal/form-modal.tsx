@@ -17,7 +17,6 @@ export interface FormFields {
 
 const FormFields = ({ fields }: { fields: FormFields[] }) => {
   return fields.map(field => {
-    console.log({ field });
     const { inputId, inputLabel, inputName, inputValue, inputPlaceholder, inputType } = field;
 
     return (

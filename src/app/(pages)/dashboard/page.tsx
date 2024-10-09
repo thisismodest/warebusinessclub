@@ -1,14 +1,26 @@
 import BusinessList from "@/app/components/business-list/business-list";
-import { auth } from "@/auth";
 import { redirect } from "next/navigation";
 import styles from "@/app/(pages)/dashboard/dashboard.module.css";
+
+import { restrictedSession } from "@/helpers/session-helper";
 
 import { getBusinesses } from "@/lib/user-data";
 
 export default async function Page() {
   // Authenticate user
-  const session = await auth();
-  if (!session) return redirect("/login");
+  const session = await restrictedSession() || redirect("/login");
+  const hasValidRole = session.user.role > 0;
+
+  if (!hasValidRole) return (
+    <>
+      <section className={styles.wrapper} style={{ textAlign: "center", paddingTop: "4rem" }}>
+        <h2>Awaiting verification</h2>
+        <p>If you're seeing this page, please <a href="mailto:businessclub@modestindustries.co">contact us</a> for verification.</p>
+        <p>It may be because you haven't joined the early-access membership list yet, or your email address is different than what we have pre-approved.</p>
+        <p>In the meantime, you can still view and edit your <a href="/profile/edit">profile details here</a>.</p>
+      </section>
+    </>
+  )
 
   const userBusiness = await getBusinesses(session.user?.id);
 

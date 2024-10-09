@@ -66,12 +66,10 @@ export default async function Page() {
     "use server";
 
     if (Object.keys(data).length < 1) return;
-    console.log(data);
 
     try {
       const updatedUser = await updateUserProfile(userId, data);
       console.log({ updatedUser });
-
     } catch (e) {
       throw e;
     }

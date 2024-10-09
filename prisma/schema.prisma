@@ -31,7 +31,6 @@ model User {
 
   profileUrl    String?
 
-  // Roles: subscriber=0, contributor=1, business=2, admin=3
   role          Int @default(0)
 
   createdAt DateTime @default(now())

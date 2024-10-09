@@ -1,18 +1,8 @@
 'use server'
 
-import { Prisma } from '@prisma/client'
+// import { Prisma } from '@prisma/client'
 import { prisma } from "@/prisma";
-
-import { auth } from "@/auth";
-
-
-const userAllowed = async (userId: string) => {
-  const session = await auth();
-  if (!session || !session?.user) return false;
-  if (session.user?.id !== userId) return false;
-
-  return true;
-}
+import { restrictedSession } from "@/helpers/session-helper";
 // export const createUser = async (email: string, password: string) => {
 
 //   try {
@@ -124,7 +114,8 @@ export const getUserProfile = async (profileId?: string) => {
 }
 
 export const updateUserProfile = async (userId: string, updateData: any) => {
-  if (!await userAllowed(userId)) return false;
+
+  if (!await restrictedSession({ userId })) return false;
 
   try {
     const User = await prisma.user.update({

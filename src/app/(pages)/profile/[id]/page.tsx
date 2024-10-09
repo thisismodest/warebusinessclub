@@ -1,11 +1,12 @@
 'use server'
 import ProfileCard from "@/app/components/profile-card/profile-card";
-import { auth } from "@/auth";
+import { restrictedSession } from "@/helpers/session-helper";
 import { redirect } from "next/navigation";
 
 export default async function Page({ params }: { params: { id: string } }) {
 
-  const session = await auth();
+  const session = await restrictedSession({ minimumRole: 1 });
+
   if (!session || !session?.user?.id) return redirect("/login");
 
   const { id: userId, profileUrl } = session.user;
