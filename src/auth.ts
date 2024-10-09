@@ -17,4 +17,13 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
   pages: {
     signIn: '/login',
   },
+  callbacks: {
+    session({ session, user }) {
+
+      // console.log("Session callback", session, user);
+      console.log("SEESSS", { user })
+      session.user.role = user.role
+      return session
+    }
+  },
 })

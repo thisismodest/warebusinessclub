@@ -113,6 +113,7 @@ export const getUserProfile = async (profileId?: string) => {
         businessLoc: true,
         businessMap: true,
         profileUrl: true,
+        role: true,
       }
     });
 

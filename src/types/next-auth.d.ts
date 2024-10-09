@@ -22,6 +22,13 @@ declare module "next-auth" {
       businessLoc: string | null | undefined,
       businessMap: string | null | undefined,
       profileUrl: string | null | undefined,
+      role: number,
     } & DefaultSession["user"]
+  }
+}
+
+declare module "@auth/core/adapters" {
+  interface AdapterUser {
+    role: number
   }
 }
